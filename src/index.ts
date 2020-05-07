@@ -18,4 +18,4 @@ class Document {
     }
 }
 
-export default Document;
+export { DOMElement, Document };

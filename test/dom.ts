@@ -1,8 +1,8 @@
 import { strictEqual } from 'assert';
 import { describe, it } from 'mocha';
-import Dom from '../src/index';
+import { Document } from '../src/index';
 
-const dom = new Dom();
+const dom = new Document();
 
 describe('Empty HTML string', () => {
     it('should equal', () => {
@@ -21,9 +21,9 @@ describe('Create element and append to body', () => {
 describe('Create element and append to body', () => {
     it('should equal', () => {
         const div = dom.createElement('div');
-        div.setAttribute('class','test');
+        div.setAttribute('class', 'test');
         dom.body.appendChild(div);
         strictEqual(dom.html.toString(), '<html><head></head><body><div></div><div class="test"></div></body></html>');
-        div.setAttribute('class','test');
+        div.setAttribute('class', 'test');
     });
 });

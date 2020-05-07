@@ -2,28 +2,44 @@ import { strictEqual } from 'assert';
 import { describe, it } from 'mocha';
 import { Document } from '../src/index';
 
-const dom = new Document();
-
-describe('Empty HTML string', () => {
+describe('HTML string', () => {
     it('should equal', () => {
+        const dom = new Document();
         strictEqual(dom.html.toString(), '<html><head></head><body></body></html>');
     });
+
 });
 
-describe('Create element and append to body', () => {
+describe('Create and append element', () => {
     it('should equal', () => {
+        const dom = new Document();
         const div = dom.createElement('div');
         dom.body.appendChild(div);
         strictEqual(dom.html.toString(), '<html><head></head><body><div></div></body></html>');
     });
 });
 
-describe('Create element and append to body', () => {
+describe('Remove element', () => {
     it('should equal', () => {
+        const dom = new Document();
+        dom.html.removeChild(dom.body);
+        strictEqual(dom.html.toString(), '<html><head></head></html>');
+    });
+});
+
+describe('Create and insert before element', () => {
+    it('should equal', () => {
+        const dom = new Document();
         const div = dom.createElement('div');
-        div.setAttribute('class', 'test');
-        dom.body.appendChild(div);
-        strictEqual(dom.html.toString(), '<html><head></head><body><div></div><div class="test"></div></body></html>');
-        div.setAttribute('class', 'test');
+        dom.html.insertBefore(div, dom.body);
+        strictEqual(dom.html.toString(), '<html><head></head><div></div><body></body></html>');
+    });
+});
+
+describe('Set attribute to element', () => {
+    it('should equal', () => {
+        const dom = new Document();
+        dom.html.setAttribute('lang', 'en');
+        strictEqual(dom.html.toString(), '<html lang="en"><head></head><body></body></html>');
     });
 });

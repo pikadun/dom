@@ -17,10 +17,22 @@ class DOMElement {
         this.child.push(newChild);
     }
 
-    removeChild(element: DOMElement): void {
-        const index = this.child.indexOf(element);
+    removeChild(oldChild: DOMElement): void {
+        const index = this.child.indexOf(oldChild);
         this.child.splice(index, 1);
-        element = Object.create(null);
+        oldChild.parent = Object.create(null);
+    }
+
+    insertBefore(newChild: DOMElement, refChild?: DOMElement): void {
+        newChild.parent = this;
+
+        if (!refChild) {
+            this.child.push(newChild);
+            return;
+        } else {
+            const index = this.child.indexOf(newChild);
+            this.child.splice(index, 0, newChild);
+        }
     }
 
     setAttribute(qualifiedName: string, value: string): void {

@@ -1,0 +1,10 @@
+.nyc/
+
+node_modules/
+src/
+test/
+.eslintrc.json
+.gitignore
+.nycrc.json
+package-lock.json
+tsconfig.json

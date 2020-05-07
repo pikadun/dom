@@ -1,0 +1,7 @@
+.nyc/
+
+.vscode/launch.json
+
+node_modules/
+
+lib/

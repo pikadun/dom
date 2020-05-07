@@ -1,0 +1,27 @@
+{
+  "name": "@pikadun/dom",
+  "version": "0.0.1",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "ts-mocha test/**/*.ts",
+    "coverage": "nyc npm test",
+    "lint": "eslint '**/*.ts'",
+    "lint:fix": "eslint --fix '**/*.ts'",
+    "compile": "tsc --build ./tsconfig.json",
+    "prestart": "npm run compile",
+    "start": "node ./lib/index.js"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^13.13.4",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/parser": "^2.30.0",
+    "eslint": "^6.8.0",
+    "mocha": "^7.1.2",
+    "nyc": "^15.0.1",
+    "ts-mocha": "^7.0.0",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {}
+}

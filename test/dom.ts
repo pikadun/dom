@@ -2,53 +2,68 @@ import { strictEqual } from 'assert';
 import { describe, it } from 'mocha';
 import { Document } from '../src/index';
 
+
+const template = (): Document => {
+    const document = new Document();
+    const html = document.html;
+    const head = document.createElement('head');
+    const body = document.createElement('body');
+    html.appendChild(body);
+    html.insertBefore(head, body);
+    return document;
+};
+
 describe('HTML string', () => {
     it('should equal', () => {
-        const dom = new Document();
-        strictEqual(dom.html.toString(), '<html><head></head><body></body></html>');
-    });
-
-});
-
-describe('Create and append element', () => {
-    it('should equal', () => {
-        const dom = new Document();
-        const div = dom.createElement('div');
-        dom.body.appendChild(div);
-        strictEqual(dom.html.toString(), '<html><head></head><body><div></div></body></html>');
+        const document = template();
+        const html = document.html;
+        strictEqual(html.toString(), '<html><head></head><body></body></html>');
     });
 });
 
-describe('Remove element', () => {
+describe('Document.setAttribute', () => {
     it('should equal', () => {
-        const dom = new Document();
-        dom.html.removeChild(dom.body);
-        strictEqual(dom.html.toString(), '<html><head></head></html>');
+        const document = template();
+        const html = document.html;
+        html.setAttribute('lang', 'en');
+        strictEqual(html.toString(), '<html lang="en"><head></head><body></body></html>');
     });
 });
 
-describe('Create and insert before element', () => {
+describe('Document.appendChild', () => {
     it('should equal', () => {
-        const dom = new Document();
-        const div = dom.createElement('div');
-        dom.html.insertBefore(div, dom.body);
-        strictEqual(dom.html.toString(), '<html><head></head><div></div><body></body></html>');
+        const document = template();
+        const html = document.html;
+        const div = document.createElement('div');
+        html.appendChild(div);
+        strictEqual(html.toString(), '<html><head></head><body></body><div></div></html>');
     });
 });
 
-describe('Create and insert before null element', () => {
+describe('Document.getElementsByTagName', () => {
     it('should equal', () => {
-        const dom = new Document();
-        const div = dom.createElement('div');
-        dom.html.insertBefore(div);
-        strictEqual(dom.html.toString(), '<html><head></head><body></body><div></div></html>');
+        const document = template();
+        const body = document.getElementsByTagName('body');
+        strictEqual(body[0].toString(), '<body></body>');
     });
 });
 
-describe('Set attribute to element', () => {
+describe('Document.removeChild', () => {
     it('should equal', () => {
-        const dom = new Document();
-        dom.html.setAttribute('lang', 'en');
-        strictEqual(dom.html.toString(), '<html lang="en"><head></head><body></body></html>');
+        const document = template();
+        const html = document.html;
+        const bodys = document.getElementsByTagName('body');
+        html.removeChild(bodys[0]);
+        strictEqual(html.toString(), '<html><head></head></html>');
+    });
+});
+
+describe('Document.insertBefore', () => {
+    it('should equal', () => {
+        const document = template();
+        const html = document.html;
+        const div = document.createElement('div');
+        html.insertBefore(div);
+        strictEqual(html.toString(), '<html><head></head><body></body><div></div></html>');
     });
 });

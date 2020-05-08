@@ -36,6 +36,15 @@ describe('Create and insert before element', () => {
     });
 });
 
+describe('Create and insert before null element', () => {
+    it('should equal', () => {
+        const dom = new Document();
+        const div = dom.createElement('div');
+        dom.html.insertBefore(div);
+        strictEqual(dom.html.toString(), '<html><head></head><body></body><div></div></html>');
+    });
+});
+
 describe('Set attribute to element', () => {
     it('should equal', () => {
         const dom = new Document();

@@ -1,20 +1,21 @@
 import DOMElement from './element';
+import util from './util';
 
 class Document {
-    html: DOMElement;
-    head: DOMElement;
-    body: DOMElement;
-
+    readonly html: DOMElement;
     constructor() {
-        this.head = this.createElement('head');
-        this.body = this.createElement('body');
         this.html = this.createElement('html');
-        this.html.appendChild(this.head);
-        this.html.appendChild(this.body);
     }
 
-    createElement(name: string): DOMElement {
-        return new DOMElement(name);
+    createElement(tagName: string): DOMElement {
+        return new DOMElement(tagName);
+    }
+
+    getElementsByTagName(qualifiedName: string): DOMElement[] {
+        return util.domWalk(
+            this.html,
+            (e: DOMElement) => e.tagName.toLowerCase() === qualifiedName.toLowerCase()
+        );
     }
 }
 

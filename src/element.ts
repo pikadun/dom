@@ -1,12 +1,12 @@
-import Serialize from './serialize';
+import util from './util';
 
 class DOMElement {
-    parent: DOMElement;
+    parent?: DOMElement;
     child: DOMElement[];
     attribute: { [x: string]: string };
     style: { [x: string]: string };
-    constructor(public name: string) {
-        this.parent = Object.create(null);
+    constructor(public tagName: string) {
+        this.parent = undefined;
         this.child = [];
         this.style = {};
         this.attribute = {};
@@ -20,7 +20,7 @@ class DOMElement {
     removeChild(oldChild: DOMElement): void {
         const index = this.child.indexOf(oldChild);
         this.child.splice(index, 1);
-        oldChild.parent = Object.create(null);
+        oldChild.parent = undefined;
     }
 
     insertBefore(newChild: DOMElement, refChild?: DOMElement): void {
@@ -40,7 +40,7 @@ class DOMElement {
     }
 
     toString(): string {
-        return Serialize.encode(this);
+        return util.serialize(this);
     }
 }
 

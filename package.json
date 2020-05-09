@@ -14,7 +14,17 @@
   "keywords": [
     "dom"
   ],
+  "author": {
+    "name": "Dunn",
+    "email": "wg0121@outlook.com"
+  },
+  "homepage": "https://github.com/pikadun/dom/wiki",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pikadun/dom"
+  },
+  "bugs": "https://github.com/pikadun/dom/issues",
   "devDependencies": {
     "@types/mocha": "^7.0.2",
     "@types/node": "^13.13.4",

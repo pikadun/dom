@@ -9,9 +9,10 @@ import Document from '@pikadun/dom';
 const document = new Document();
 const div = document.createElement('div');
 div.setAttribute('class','test');
-document.body.appendChild(div);
+document.html.appendChild(div);
 
-document.toString(); // <html><head></head><body><div></div><div class="test"></div></body></html>
+// <html><div class="test"></div></html>
+document.toString();
 ```
 
 ## Installation
@@ -20,6 +21,6 @@ document.toString(); // <html><head></head><body><div></div><div class="test"></
 npm install @pikadun/dom
 ```
 
-## More APIs are coming soon
+## Document
 
-...
+More document can be found on [https://github.com/pikadun/dom/wiki](https://github.com/pikadun/dom/wiki)

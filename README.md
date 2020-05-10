@@ -9,9 +9,9 @@ import Document from '@pikadun/dom';
 const document = new Document();
 const div = document.createElement('div');
 div.setAttribute('class','test');
-document.html.appendChild(div);
+document.appendChild(div);
 
-// <html><div class="test"></div></html>
+// <div class="test"></div>
 document.toString();
 ```
 

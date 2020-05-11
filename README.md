@@ -1,6 +1,11 @@
 # Dom
 
-A minimal DOM implement with Typescript
+A DOM tree implement with Typescript!
+
+## Feature
+
++ Provide the same API like the browser.
++ Small and lightweight.
 
 ## Example
 

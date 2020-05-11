@@ -5,7 +5,7 @@ A minimal DOM implement with Typescript
 ## Example
 
 ```typescript
-import Document from '@pikadun/dom';
+import { Document } from '@pikadun/dom';
 const document = new Document();
 const div = document.createElement('div');
 div.setAttribute('class','test');

@@ -16,16 +16,11 @@ class Document extends Node implements Interface.Document {
         return new Element(tagName);
     }
 
-    getElementsByTagName(qualifiedName: string): Interface.Element[] {
-        let result: Interface.Element[] = [];
+    getElementsByTagName(qualifiedName: string): Interface.Node[] {
+        let result: Interface.Node[] = [];
         this.childNodes.forEach(childNode => {
             const node = childNode as Interface.Element;
-            result = result.concat(
-                util.domWalk(
-                    node,
-                    (e: Interface.Element) => e.tagName.toLowerCase() === qualifiedName.toLowerCase()
-                )
-            );
+            result = result.concat(node.getElementsByTagName(qualifiedName));
         });
 
         return result;

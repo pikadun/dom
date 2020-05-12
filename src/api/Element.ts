@@ -13,7 +13,7 @@ class Element extends Node implements Interface.Element {
         this.textContent = '';
     }
 
-    getElementsByTagName(qualifiedName: string): Interface.Element[] {
+    getElementsByTagName(qualifiedName: string): Interface.Node[] {
         return util.domWalk(
             this,
             (e: Interface.Element) => e.tagName.toLowerCase() === qualifiedName.toLowerCase()

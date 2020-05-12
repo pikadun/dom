@@ -1,7 +1,4 @@
 export interface Document extends Node {
-    readonly body: Element | null;
-    readonly head: Element | null;
-
     createElement(tagName: string): Element;
     getElementsByTagName(qualifiedName: string): Element[];
     toString(): string;
@@ -20,7 +17,9 @@ export interface Element extends Node {
 export interface Node {
     readonly childNodes: Node[];
     ParentNode: Node | null;
+    textContent: string | null;
     appendChild<T extends Node>(newChild: T): T;
     insertBefore<T extends Node>(newChild: T, refChild: Node | null): T;
     removeChild<T extends Node>(oldChild: T): T;
+    toString(): string;
 }

@@ -4,21 +4,12 @@ import Element from './Element';
 import util from '../common/util';
 
 class Document extends Node implements Interface.Document {
-
-    #privateHead: Interface.Element | null;
-    #privateBody: Interface.Element | null;
-
-    get head(): Interface.Element | null {
-        return this.#privateHead;
-    }
-    get body(): Interface.Element | null {
-        return this.#privateBody;
+    get textContent(): null {
+        return null;
     }
 
     constructor() {
         super();
-        this.#privateHead = null;
-        this.#privateBody = null;
     }
 
     createElement(tagName: string): Interface.Element {

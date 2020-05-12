@@ -66,16 +66,9 @@ describe('Document.insertBefore', () => {
     });
 });
 
-describe('Document.head', () => {
+describe('Document.textContext', () => {
     it('should equal', () => {
         const document = template();
-        strictEqual(document.head, null);
-    });
-});
-
-describe('Document.body', () => {
-    it('should equal', () => {
-        const document = template();
-        strictEqual(document.body, null);
+        strictEqual(document.textContent, null);
     });
 });

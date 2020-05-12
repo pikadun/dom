@@ -5,11 +5,12 @@ import util from '../common/util';
 class Element extends Node implements Interface.Element {
     readonly attributes: { [x: string]: string };
     id: string;
-
+    textContent: string | null;
     constructor(readonly tagName: string) {
         super();
         this.attributes = {};
         this.id = '';
+        this.textContent = '';
     }
 
     getElementsByTagName(qualifiedName: string): Interface.Element[] {

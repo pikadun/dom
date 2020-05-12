@@ -1,8 +1,10 @@
 import * as Interface from '../abstraction/interface';
 
-class Node implements Interface.Node {
+
+abstract class Node implements Interface.Node {
     childNodes: Interface.Node[];
     ParentNode: Interface.Node | null;
+    abstract textContent: string | null;
 
     constructor() {
         this.childNodes = [];
@@ -33,6 +35,8 @@ class Node implements Interface.Node {
         oldChild.ParentNode = null;
         return oldChild;
     }
+
+    abstract toString(): string;
 }
 
 export default Node;

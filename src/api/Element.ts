@@ -5,15 +5,23 @@ import util from '../common/util';
 class Element extends Node implements Interface.Element {
     readonly attributes: { [x: string]: string };
     id: string;
-    textContent: string | null;
+    #privateTextContent: string | null;
+    get textContent(): string | null {
+        return this.#privateTextContent;
+    }
+    set textContent(v: string | null) {
+        this.childNodes = [];
+        this.#privateTextContent = v;
+    }
+
     constructor(readonly tagName: string) {
         super();
         this.attributes = {};
         this.id = '';
-        this.textContent = '';
+        this.#privateTextContent = '';
     }
 
-    getElementsByTagName(qualifiedName: string): Interface.Node[] {
+    getElementsByTagName(qualifiedName: string): Interface.Element[] {
         return util.domWalk(
             this,
             (e: Interface.Element) => e.tagName.toLowerCase() === qualifiedName.toLowerCase()

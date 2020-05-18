@@ -16,8 +16,8 @@ class Document extends Node implements Interface.Document {
         return new Element(tagName);
     }
 
-    getElementsByTagName(qualifiedName: string): Interface.Node[] {
-        let result: Interface.Node[] = [];
+    getElementsByTagName(qualifiedName: string): Interface.Element[] {
+        let result: Interface.Element[] = [];
         this.childNodes.forEach(childNode => {
             const node = childNode as Interface.Element;
             result = result.concat(node.getElementsByTagName(qualifiedName));

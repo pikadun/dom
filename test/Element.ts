@@ -32,3 +32,15 @@ describe('Element.getElementsByTagName', () => {
         strictEqual(div.getElementsByTagName('input')[0].toString(), '<input></input>');
     });
 });
+
+describe('Element.textContent', () => {
+    it('should equal', () => {
+        const document = template();
+
+        const div = document.createElement('div');
+        document.appendChild(div);
+        div.textContent = '1';
+
+        strictEqual(document.toString(), '<head></head><body></body><div>1</div>');
+    });
+});

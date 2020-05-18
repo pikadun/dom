@@ -11,6 +11,10 @@ class Util {
 
         strs.push(`<${element.tagName}${attrs.join('')}>`);
 
+        if (element.textContent) {
+            strs.push(element.textContent);
+        }
+
         if (element.childNodes.length > 0) {
             element.childNodes.forEach(elem => {
                 strs.push(this.serialize(elem as Interface.Element));

@@ -17,7 +17,7 @@ abstract class Node implements Interface.Node {
         return newChild;
     }
 
-    abstract getElementsByTagName(qualifiedName: string): Interface.Node[];
+    abstract getElementsByTagName(qualifiedName: string): Interface.Element[];
 
     insertBefore<T extends Interface.Node>(newChild: T, refChild: Interface.Node | null): T {
         newChild.ParentNode = this;

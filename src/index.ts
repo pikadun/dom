@@ -1,5 +1,5 @@
 import Document from './api/Document';
-import Element from './api/Element';
+import { Element } from './abstraction/interface';
 
 export {
     Document,
